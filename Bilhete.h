@@ -13,17 +13,35 @@ class Bilhete
 
 class Ocasional: public Bilhete{
     public:
-        Ocasional(string tipo)
+        Ocasional(int duracao, string categoria)
     private:
         int duracao;
 };
 
-class Assinatura: public Bilhete{
+class Assinatura{
     public:
-        Assinatura(string nome, int idade, string cc, string escola);
+        Assinatura(string nome);
     private:
-        string nome, escola;
-        int idade, cc;
+        string nome;
 };
 
+class Normal: public Bilhete, public Assinatura{
+    public:
+        Normal(string categoria, string nome);
+};
+
+class Estudante: public Bilhete, public Assinatura{
+    public:
+        Estudante(string categoria, string nome, int idade, int cc, string escola);
+    private:
+        int idade, cc;
+        string escola;
+};
+
+class Junior_Senior: public Bilhete, public Assinatura{
+    public:
+        Junior_Senior(string categoria, string nome, int idade, int cc);
+    private:
+        int idade, int cc;
+};
 #endif // BILHETE_H
