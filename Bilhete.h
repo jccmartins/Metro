@@ -1,6 +1,9 @@
 #ifndef BILHETE_H
 #define BILHETE_H
 
+#include <string>
+
+using namespace std;
 
 class Bilhete
 {
@@ -13,7 +16,8 @@ class Bilhete
 
 class Ocasional: public Bilhete{
     public:
-        Ocasional(int duracao, string categoria)
+        Ocasional(string categoria, int duracao);
+        int getDuracao() const;
     private:
         int duracao;
 };
@@ -21,6 +25,7 @@ class Ocasional: public Bilhete{
 class Assinatura{
     public:
         Assinatura(string nome);
+        virtual int getDiscount() const = 0;
     private:
         string nome;
 };
@@ -33,6 +38,7 @@ class Normal: public Bilhete, public Assinatura{
 class Estudante: public Bilhete, public Assinatura{
     public:
         Estudante(string categoria, string nome, int idade, int cc, string escola);
+        int getDiscount() const;
     private:
         int idade, cc;
         string escola;
@@ -41,7 +47,8 @@ class Estudante: public Bilhete, public Assinatura{
 class Junior_Senior: public Bilhete, public Assinatura{
     public:
         Junior_Senior(string categoria, string nome, int idade, int cc);
+        int getDiscount() const;
     private:
-        int idade, int cc;
+        int idade, cc;
 };
 #endif // BILHETE_H
