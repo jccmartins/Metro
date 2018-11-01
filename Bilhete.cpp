@@ -16,16 +16,16 @@ int Ocasional::getDuracao() const{
     return duracao;
 }
 
-Assinatura::Assinatura(string nome){
+Assinatura::Assinatura(string categoria, string nome): Bilhete(categoria){
     this->nome = nome;
 };
 
 Normal::Normal(string categoria, string nome):
-Bilhete(categoria), Assinatura(nome)
+Assinatura(categoria,nome)
 {}
 
 Estudante::Estudante(string categoria, string nome, int idade, int cc, string escola):
-Bilhete(categoria), Assinatura(nome){
+Assinatura(categoria, nome){
     this->idade = idade;
     this->cc = cc;
     this->escola = escola;
@@ -36,7 +36,7 @@ int Estudante::getDiscount() const{
 }
 
 Junior_Senior::Junior_Senior(string categoria, string nome, int idade, int cc):
-Bilhete(categoria), Assinatura(nome){
+Assinatura(categoria, nome){
     this->idade = idade;
     this->cc = cc;
 }

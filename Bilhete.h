@@ -22,20 +22,20 @@ class Ocasional: public Bilhete{
         int duracao;
 };
 
-class Assinatura{
+class Assinatura: public Bilhete{
     public:
-        Assinatura(string nome);
+        Assinatura(string categoria, string nome);
         virtual int getDiscount() const = 0;
     private:
         string nome;
 };
 
-class Normal: public Bilhete, public Assinatura{
+class Normal: public Assinatura{
     public:
         Normal(string categoria, string nome);
 };
 
-class Estudante: public Bilhete, public Assinatura{
+class Estudante: public Assinatura{
     public:
         Estudante(string categoria, string nome, int idade, int cc, string escola);
         int getDiscount() const;
@@ -44,7 +44,7 @@ class Estudante: public Bilhete, public Assinatura{
         string escola;
 };
 
-class Junior_Senior: public Bilhete, public Assinatura{
+class Junior_Senior: public Assinatura{
     public:
         Junior_Senior(string categoria, string nome, int idade, int cc);
         int getDiscount() const;
