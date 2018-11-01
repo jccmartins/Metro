@@ -10,8 +10,6 @@ class Metro
     public:
         void adicionaBilhete(Bilhete *b1);
         int numeroBilhetes() const;
-
-
 };
 
 #endif // METRO_H
