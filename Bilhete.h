@@ -10,6 +10,7 @@ class Bilhete
   public:
     Bilhete(string categoria);
     string getCategoria() const;
+    virtual void info() const = 0;
 
   protected:
     string categoria;
@@ -22,6 +23,7 @@ class Ocasional : public Bilhete
   public:
     Ocasional(string categoria, int duracao);
     int getDuracao() const;
+    void info() const;
 
   private:
     int duracao;
@@ -33,9 +35,10 @@ class Assinatura : public Bilhete
 {
   public:
     Assinatura(string categoria, string nome);
-    virtual int getDiscount() const = 0;
-
-  private:
+    virtual double getDiscount() const = 0;
+    virtual void info() const = 0;
+    
+  protected:
     string nome;
 };
 
@@ -45,10 +48,11 @@ class Normal : public Assinatura
 {
   public:
     Normal(string categoria, string nome);
+    double getDiscount() const;
+    void info() const;
 
   private:
-    int idade, cc;
-    string escola;
+    const double desconto = 0;
 };
 
 //ESTUDANTE
@@ -57,7 +61,8 @@ class Estudante : public Assinatura
 {
   public:
     Estudante(string categoria, string nome, int idade, int cc, string escola);
-    int getDiscount() const;
+    double getDiscount() const;
+    void info() const;
 
   private:
     const double desconto = 0.25;
@@ -71,7 +76,8 @@ class Junior_Senior : public Assinatura
 {
   public:
     Junior_Senior(string categoria, string nome, int idade, int cc);
-    int getDiscount() const;
+    double getDiscount() const;
+    void info() const;
 
   private:
     const double desconto = 0.25;
