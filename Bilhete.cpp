@@ -8,6 +8,8 @@ string Bilhete::getCategoria() const{
     return categoria;
 }
 
+//EH NAO
+
 Ocasional::Ocasional(string categoria, int duracao): Bilhete(categoria){
     this->duracao = duracao;
 };
