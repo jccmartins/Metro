@@ -6,7 +6,7 @@
 
 class Metro
 {
-    vector<Bilhete *> bilhetes;
+       vector<Bilhete *> bilhetes;
     public:
         void adicionaBilhete(Bilhete *b1);
         int numeroBilhetes() const;
